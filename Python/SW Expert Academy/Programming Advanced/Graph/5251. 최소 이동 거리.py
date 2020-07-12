@@ -4,11 +4,11 @@ from collections import deque
 
 # BFS
 for t in range(int(input())):
+    inf=float('inf')
     n,m=map(int,input().split())
     graph=[[]for _ in range(n+1)]
-    inf=float('inf')
-    queue=deque()
     dis=[inf]*(n+1)
+    queue=deque()
 
     for _ in range(m):
         s,e,w=map(int,input().split())
@@ -18,12 +18,12 @@ for t in range(int(input())):
     dis[0]=0
     
     while queue:
-        idx=queue.popleft()
-        for i,val in graph[idx]:
-            if dis[i]>dis[idx]+val:
-                dis[i]=dis[idx]+val
+        k=queue.popleft()
+        for i,val in graph[k]:
+            if dis[i]>dis[k]+val:
+                dis[i]=dis[k]+val
                 queue.append(i)
-
+                
     print("#{} {}".format(t+1,dis[n]))
 
 
