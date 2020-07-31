@@ -9,15 +9,13 @@ def solution(board, moves):
             if board[j][i-1]!=0:
                 if not lst:
                     lst.append(board[j][i-1])
-                    board[j][i-1]=0
+                    break
+                elif lst[-1]==board[j][i-1]:
+                    lst.pop()
+                    answer+=2
                     break
                 else:
-                    if lst[-1]==board[j][i-1]:
-                        lst.pop()
-                        answer+=2
-                        break
-                    else:
-                        lst.append(board[j][i-1])
-                        break
+                    lst.append(board[j][i-1])
+                    break
         board[j][i-1]=0
     return answer
